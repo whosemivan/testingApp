@@ -15,7 +15,7 @@ const TestPasser = ({ token }) => {
 
     // Получает все вопросы
     useEffect(() => {
-        axios.get(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/${id}/questions`, {
+        axios.get(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/${id}/principal`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -34,8 +34,11 @@ const TestPasser = ({ token }) => {
     const handleAnswerBtnClick = (questionId, value) => {
         const nextQuestion = currentQuestion + 1;
 
-        setAnswers([...answers, { questionId: questionId, value: value }]);
         console.log(answers);
+
+        
+        setAnswers([...answers, { questionId: questionId, value: value }]);
+
 
         if (isLoad && nextQuestion < data.length) {
             setCurrentQuestion(nextQuestion);
