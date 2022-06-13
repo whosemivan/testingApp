@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './main.css';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 
 const Main = ({setToken, setIsAuth}) => {
     const logOut = () => {
@@ -17,9 +16,6 @@ const Main = ({setToken, setIsAuth}) => {
             </Link>
             <Link to="/testCreator" className='main__btn'>
                 Создать тест
-            </Link>
-            <Link to="/allUsers" className='main__btn'>
-                Все пользователи
             </Link>
             <Link to="/" onClick={() => logOut()} className='main__btn'>
                 Выйти

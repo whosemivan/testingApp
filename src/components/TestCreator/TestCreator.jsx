@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './testCreator.css';
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 import browserHistory from "../../browser-history";
 
@@ -34,13 +33,15 @@ const TestCreator = ({token}) => {
 
 
     return (
+        <div className='container'>
         <div className='test-creator'>
             <h1>Страница создания теста</h1>
             <form onSubmit={onSubmitBtnClick} className='test-creator__form'>
-                <input type="number" placeholder='Максимальное количество попыток' />
-                <input type="text" placeholder='Название теста' onChange={(value) => setUserData({ ...userData, name: value.target.value })} />
-                <button type='submit'>Создать</button>
+                <input className='test-container__input' type="number" placeholder='Максимальное количество попыток' />
+                <input className='test-container__input' type="text" placeholder='Название теста' onChange={(value) => setUserData({ ...userData, name: value.target.value })} />
+                <button className='test-container__btn' type='submit'>Создать</button>
             </form>
+        </div>
         </div>
     );
 };

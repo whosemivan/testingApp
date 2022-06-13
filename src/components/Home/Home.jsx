@@ -8,7 +8,7 @@ const Home = ({setToken ,setIsAuth}) => {
         <div className='home'>
             <h1>Добро пожаловать!</h1>
             <SignIn setToken={setToken} setIsAuth={setIsAuth} />
-            <Link to="/signup">Нет аккаунта? Зарегистрироваться!</Link>
+            <Link className='home__link' to="/signup">Нет аккаунта? Зарегистрироваться!</Link>
         </div>
     );
 };

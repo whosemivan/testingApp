@@ -15,5 +15,13 @@
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-radius 0.5s;
+}
 
+.main__btn:hover {
+    border-radius: 20px;
 }

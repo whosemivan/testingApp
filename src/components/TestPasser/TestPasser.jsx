@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './testPasser.css';
 import { useParams } from 'react-router-dom';
@@ -26,7 +26,7 @@ const TestPasser = ({ token }) => {
                 setData(response.data.result);
             }
         });
-    }, []);
+    }, [id, token]);
 
     useEffect(() => { console.log(answers) }, [answers]);
 
@@ -62,36 +62,22 @@ const TestPasser = ({ token }) => {
         }).catch((err) => console.log(err.response));
     };
 
-
-
-    // возращает все пройденные тесты
-    // useEffect(() => {
-    //     axios.get(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/passed`, {
-    //         headers: {
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     }).then((response) => {
-    //       console.log(response.data);
-    //     });
-    //   }, []);
-
-
     return (
-        <div>
-            <h4>Страница прохождения теста</h4>
+        <div className='container'>
             {isLoad ? (
-                <div>
+                <div className='test-container'>
                     <div className='question'>
                         <div>
                             <span>Вопрос {currentQuestion + 1}</span>/{data.length}
                         </div>
-                        <p>{data[currentQuestion].name}</p>
+                        <p className='question__title'>{data[currentQuestion].name}</p>
+                        <p className='question__help'>Выберите правильный вариант ответа - для проверки нажмите Отправить</p>
                     </div>
                     <div className='answers'>
                         {Object.keys(data[currentQuestion].answers).map((key, index) => {
                             let value = data[currentQuestion].answers[key].value;
                             return (
-                                <button key={index} onClick={() => {
+                                <button className='answers__btn' key={index} onClick={() => {
                                     handleAnswerBtnClick(data[currentQuestion].id, data[currentQuestion].answers[key].value);
                                 }}>
                                     {value}
@@ -99,7 +85,7 @@ const TestPasser = ({ token }) => {
                             );
                         })}
                     </div>
-                    <button onClick={handleSubmitClick}>Отправить</button>
+                    <button className='answers__btn-submit' onClick={handleSubmitClick}>Отправить</button>
                 </div>
             ) : (<p>Загрузка...</p>)}
             <div className={isPopup ? 'popup--view' : 'popup'}>

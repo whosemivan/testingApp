@@ -35,12 +35,12 @@ const AllTests = ({ token }) => {
       <h1>Все доступные тесты</h1>
       {isLoad ? tests.map((test) => {
         return (
-          <div key={test.id}>
+          <div className='test-block__block' key={test.id}>
             <h3>{test.name}</h3>
-            <p>Максимальное количество попыток: {test.maxPassCount}</p>
-            <button onClick={() => onDeleteBtnClick(test.id)} type='button'>Удалить</button>
-            <button>Изменить</button>
-            <Link to={`/allTests/${test.id}`}>Пройти</Link>
+            <p className='test-block__text'>Максимальное количество попыток: {test.maxPassCount}</p>
+            <button className='test-block__btn' onClick={() => onDeleteBtnClick(test.id)} type='button'>Удалить</button>
+            <button className='test-block__btn'>Изменить</button>
+            <Link className='test-block__link' to={`/allTests/${test.id}`}>Пройти тест</Link>
           </div>
         );
       }) : <p>Загрузка...</p>}

@@ -1,0 +1,30 @@
+.test-creator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.test-creator__form {
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+}
+
+.test-container__input {
+    border: none;
+    background-color: #ffffff;
+    padding: 10px 15px;
+}
+
+.test-container__btn {
+    border: none;
+    padding: 10px 15px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: border-radius 0.5s;
+}
+
+.test-container__btn:hover {
+    border-radius: 20px;
+}

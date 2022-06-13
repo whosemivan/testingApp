@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 import SignUp from './SignUp/SignUp';
 import Main from './Main/Main';
@@ -10,7 +9,7 @@ import Test from './Test/Test';
 import TestPasser from './TestPasser/TestPasser';
 import TestCreator from './TestCreator/TestCreator';
 import QuestionCreator from './QuestionCreator/QuestionCreator';
-import AllUsers from './AllUsers/AllUsers';
+// import AllUsers from './AllUsers/AllUsers';
 
 import browserHistory from "../browser-history";
 import PrivateRoute from '../private-route';
@@ -73,11 +72,11 @@ const App = () => {
           render={() => <QuestionCreator token={token} />}
           authorizationStatus={isAuth}
         />
-        <PrivateRoute exact
+        {/* <PrivateRoute exact
           path='/allUsers'
           render={() => <AllUsers token={token} />}
           authorizationStatus={isAuth}
-        />
+        /> */}
         <Route>
           <NotFound />
         </Route>

@@ -17,14 +17,16 @@ const Test = () => {
             setIsLoad(true);
         });
 
-    }, []);
+    }, [id]);
 
     if (isLoad) {
         return (
-            <div>
-                <h4>{data.name}</h4>
-                <p>Осталось попыток: {data.maxPassCount}</p>
-                <Link to={`/allTests/${id}/testPasser`}>Пройти</Link>
+            <div className='container'>
+                <div className='test'>
+                    <h4 className='test__title'>{data.name}</h4>
+                    <p className='test__text'>Осталось попыток: {data.maxPassCount}</p>
+                    <Link className='test__link' to={`/allTests/${id}/testPasser`}>Пройти</Link>
+                </div>
             </div>
         );
     } else {
