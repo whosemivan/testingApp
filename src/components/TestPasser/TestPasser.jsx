@@ -38,18 +38,23 @@ const TestPasser = ({ token }) => {
         if (isLoad && nextQuestion < data.length) {
             setCurrentQuestion(nextQuestion);
         } else {
-            console.log(answers);
-            axios
-                .post(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/${id}/pass`, answers, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
-                .then((response) => {
-                    console.log(response.data);
-                }).catch((err) => console.log(err.response));
+            alert('Тест пройден!');
         };
     }
+
+    const handleSubmitClick = () => {
+        console.log('Запрос', answers);
+
+        axios
+        .post(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/${id}/pass`, answers, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then((response) => {
+            console.log(response.data);
+        }).catch((err) => console.log(err.response));
+    };
 
     return (
         <div>
@@ -74,6 +79,7 @@ const TestPasser = ({ token }) => {
                             );
                         })}
                     </div>
+                    <button onClick={handleSubmitClick}>Отправить</button>
                 </div>
             ) : (<p>Загрузка...</p>)}
 
