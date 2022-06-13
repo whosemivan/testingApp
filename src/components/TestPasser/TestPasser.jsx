@@ -2,7 +2,7 @@ import React, { useEffect, useState, useReducer } from 'react';
 import axios from 'axios';
 import './testPasser.css';
 import { useParams } from 'react-router-dom';
-
+import {Link} from 'react-router-dom';
 
 const TestPasser = ({ token }) => {
     const { id } = useParams();
@@ -10,6 +10,8 @@ const TestPasser = ({ token }) => {
     const [isLoad, setIsLoad] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
+    const [result, setResult] = useState();
+    const [isPopup, setIsPopup] = useState(false);
 
     // Получает все вопросы
     useEffect(() => {
@@ -37,14 +39,11 @@ const TestPasser = ({ token }) => {
 
         if (isLoad && nextQuestion < data.length) {
             setCurrentQuestion(nextQuestion);
-        } else {
-            alert('Тест пройден!');
-        };
+        }
     }
 
-    const handleSubmitClick = () => {
-        console.log('Запрос', answers);
 
+    const handleSubmitClick = () => {
         axios
         .post(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/${id}/pass`, answers, {
             headers: {
@@ -52,9 +51,27 @@ const TestPasser = ({ token }) => {
             }
         })
         .then((response) => {
-            console.log(response.data);
+            console.log(response.data.result);
+            if (response.status) {
+                setResult(response.data.result.result);
+                setIsPopup(true);
+            }
         }).catch((err) => console.log(err.response));
     };
+
+
+
+    // возращает все пройденные тесты
+    // useEffect(() => {
+    //     axios.get(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/passed`, {
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     }).then((response) => {
+    //       console.log(response.data);
+    //     });
+    //   }, []);
+
 
     return (
         <div>
@@ -82,7 +99,10 @@ const TestPasser = ({ token }) => {
                     <button onClick={handleSubmitClick}>Отправить</button>
                 </div>
             ) : (<p>Загрузка...</p>)}
-
+            <div className={isPopup ? 'popup--view' : 'popup'}>
+                <h4>Ваш результат - {result}/{isLoad ? data.length : 'Загрузка...'}</h4>
+                <Link to="/allTests">Верунться на страницу тестов</Link>
+            </div>
         </div>
     );
 }
