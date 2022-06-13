@@ -54,7 +54,7 @@ const App = () => {
         />
         <PrivateRoute exact
           path='/allTests/:id'
-          render={() => <Test />}
+          render={() => <Test token={token} />}
           authorizationStatus={isAuth}
         />
         <PrivateRoute exact

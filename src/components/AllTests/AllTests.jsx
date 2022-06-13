@@ -37,7 +37,6 @@ const AllTests = ({ token }) => {
         return (
           <div className='test-block__block' key={test.id}>
             <h3>{test.name}</h3>
-            <p className='test-block__text'>Максимальное количество попыток: {test.maxPassCount}</p>
             <button className='test-block__btn' onClick={() => onDeleteBtnClick(test.id)} type='button'>Удалить</button>
             <button className='test-block__btn'>Изменить</button>
             <Link className='test-block__link' to={`/allTests/${test.id}`}>Пройти тест</Link>
