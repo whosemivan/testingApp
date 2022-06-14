@@ -3,7 +3,7 @@ import axios from 'axios';
 import './allTests.css';
 import { Link } from 'react-router-dom';
 
-const AllTests = ({ token }) => {
+const AllTests = ({ token, role }) => {
   const [tests, setTests] = useState();
   const [isLoad, setIsLoad] = useState(false);
 
@@ -29,7 +29,7 @@ const AllTests = ({ token }) => {
   };
 
   console.log(tests);
-  
+
   return (
     <div className='test-block'>
       <h1>Все доступные тесты</h1>
@@ -37,8 +37,13 @@ const AllTests = ({ token }) => {
         return (
           <div className='test-block__block' key={test.id}>
             <h3>{test.name}</h3>
-            <button className='test-block__btn' onClick={() => onDeleteBtnClick(test.id)} type='button'>Удалить</button>
-            <button className='test-block__btn'>Изменить</button>
+            {
+              role === "ROLE_ADMIN" &&
+              <React.Fragment>
+                <button className='test-block__btn' onClick={() => onDeleteBtnClick(test.id)} type='button'>Удалить</button>
+                <button className='test-block__btn'>Изменить</button>
+              </React.Fragment>
+            }
             <Link className='test-block__link' to={`/allTests/${test.id}`}>Пройти тест</Link>
           </div>
         );

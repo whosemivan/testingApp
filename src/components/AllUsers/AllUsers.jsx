@@ -14,7 +14,7 @@ const AllUsers = ({ token }) => {
         }).then((response) => {
             console.log(response.data);
             setUsers(response.data.result);
-            // console.log(response.data.result);
+            console.log(response.data.result);
             setIsLoad(true);
         });
     }, []);

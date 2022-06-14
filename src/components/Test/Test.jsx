@@ -22,7 +22,7 @@ const Test = ({token}) => {
                 } 
             }).then((response) => { 
                 if (response.data.result) { 
-                    axios.get(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/${id}/result`, { 
+                    axios.get(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz/${id}/result/principal`, { 
                         headers: { 
                             'Authorization': `Bearer ${token}`
                         } 

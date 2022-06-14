@@ -3,7 +3,7 @@ import './signIn.css';
 import axios from 'axios';
 import browserHistory from "../../browser-history";
 
-const SignIn = ({setToken ,setIsAuth}) => {
+const SignIn = ({setToken, setIsAuth, setRole}) => {
     const [login, setLogin] = useState();
     const [password, setPassword] = useState();
 
@@ -24,6 +24,7 @@ const SignIn = ({setToken ,setIsAuth}) => {
                 if (response.status === 200) {
                     setIsAuth(true);
                     setToken(response.data.result.token);
+                    setRole(response.data.result.role);
                     browserHistory.push(`/main`);
                 }
             }).catch((e) => console.log(e));

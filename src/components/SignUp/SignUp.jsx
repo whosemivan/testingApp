@@ -3,7 +3,7 @@ import './signUp.css';
 import axios from 'axios';
 import browserHistory from "../../browser-history";
 
-const SignUp = ({setToken ,setIsAuth}) => {
+const SignUp = ({setToken, setIsAuth, setRole}) => {
     const [userData, setUserData] = useState({ email: '', firstName: '', lastName: '', middleName: '', password: '' });
 
     const onSubmitBtnClick = (evt) => {
@@ -26,6 +26,7 @@ const SignUp = ({setToken ,setIsAuth}) => {
                 if (response.status === 200) {
                     setIsAuth(true);
                     setToken(response.data.result.token);
+                    setRole(response.data.result.role);
                     browserHistory.push(`/main`);
                 }
             });
