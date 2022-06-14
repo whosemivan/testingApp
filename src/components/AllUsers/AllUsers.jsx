@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './allUsers.css';
 
 const AllUsers = ({ token }) => {
     const [users, setUsers] = useState([]);
@@ -20,12 +21,11 @@ const AllUsers = ({ token }) => {
     }, []);
 
     return (
-        <div className='main'>
+        <div className='user-container'>
             {isLoad ? users.map((user, index) => {
                 return (
-                    <div key={index} style={{display: 'flex'}}>
-                        <p>{user.firstName}</p>
-                        <p>{user.lastName}</p>
+                    <div className='user-block' key={index}>
+                        <p className='user-name'>{user.firstName} {user.lastName}</p>
                         <p>{user.email}</p>
                     </div>
                 );
