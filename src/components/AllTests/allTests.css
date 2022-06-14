@@ -31,6 +31,8 @@
     margin-bottom: 20px;
     cursor: pointer;
     transition: border-radius 0.5s;
+    color: #000000;
+    text-decoration: none;
 }
 
 .test-block__btn:hover {
