@@ -14,16 +14,11 @@ const TestCreator = ({token}) => {
             name: userData.name,
         };
 
-        console.log(data);
-
-
         axios
             .post('https://ithub-quiz-platform.herokuapp.com/api/v1/quiz', data, {headers: {
                 'Authorization': `Bearer ${token}`
             }})
             .then((response) => {
-                console.log(response.data);
-
                 if (response.status === 200) {
                     browserHistory.push(`/questionCreator/${response.data.result.id}`);
                 }

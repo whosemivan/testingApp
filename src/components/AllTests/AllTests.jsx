@@ -9,7 +9,6 @@ const AllTests = ({ token, role }) => {
 
   useEffect(() => {
     axios.get(`https://ithub-quiz-platform.herokuapp.com/api/v1/quiz`).then((response) => {
-      console.log(response.data);
       setTests(response.data.result);
       setIsLoad(true);
     });

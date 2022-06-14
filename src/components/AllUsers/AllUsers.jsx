@@ -13,9 +13,7 @@ const AllUsers = ({ token }) => {
                 'Authorization': `Bearer ${token}`
             }
         }).then((response) => {
-            console.log(response.data);
             setUsers(response.data.result);
-            console.log(response.data.result);
             setIsLoad(true);
         });
     }, []);

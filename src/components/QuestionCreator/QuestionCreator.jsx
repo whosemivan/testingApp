@@ -57,7 +57,6 @@ const QuestionCreator = ({ token }) => {
                 }
             })
             .then((response) => {
-                console.log(response.data);
                 if (response.status === 200) {
                     inputQuestion.current.value = '';
                 }

@@ -19,8 +19,6 @@ const SignIn = ({setToken, setIsAuth, setRole}) => {
         axios
             .post('https://ithub-quiz-platform.herokuapp.com/api/v1/auth/signin', data)
             .then((response) => {
-                console.log(response.data);
-
                 if (response.status === 200) {
                     setIsAuth(true);
                     setToken(response.data.result.token);

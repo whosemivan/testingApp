@@ -33,12 +33,8 @@ const TestPasser = ({ token }) => {
     // срабатывает при клике на варинат ответа
     const handleAnswerBtnClick = (questionId, value) => {
         const nextQuestion = currentQuestion + 1;
-
-        console.log(answers);
-
         
         setAnswers([...answers, { questionId: questionId, value: value }]);
-
 
         if (isLoad && nextQuestion < data.length) {
             setCurrentQuestion(nextQuestion);
@@ -54,7 +50,6 @@ const TestPasser = ({ token }) => {
             }
         })
         .then((response) => {
-            console.log(response.data.result);
             if (response.status) {
                 setResult(response.data.result.result);
                 setIsPopup(true);
