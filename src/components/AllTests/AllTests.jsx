@@ -24,6 +24,7 @@ const AllTests = ({ token, role }) => {
       })
       .then((response) => {
         console.log(response.data);
+        setTests(tests.filter((data) => data.id !== id));
       }).catch((err) => console.log(err.response));
   };
 
