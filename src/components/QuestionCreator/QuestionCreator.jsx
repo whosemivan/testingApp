@@ -59,6 +59,8 @@ const QuestionCreator = ({ token }) => {
             .then((response) => {
                 if (response.status === 200) {
                     inputQuestion.current.value = '';
+                    setAnswers([{ id: 0, isCorrect: false, value: '' }, { id: 1, isCorrect: true, value: '' }]);
+                    alert('Вопрос добавлен! Вы можете добавить ещё!');
                 }
             }).catch((err) => console.log(err.response));
     };
@@ -86,7 +88,7 @@ const QuestionCreator = ({ token }) => {
                     <button className='question-creator__btn' onClick={() => setAnswers([...answers, { id: Object.keys(answers).length, isCorrect: false, value: '' }])} type="button" >Добавить ещё один вариант ответа</button>
                     <button className='question-creator__btn' type="submit">Создать</button>
                 </form>
-                <Link className='question-creator__link' to='/main'>Домой</Link>
+                <Link className='question-creator__link' to='/main'>Закончить и вернуться назад</Link>
             </div>
         </div>
     );
