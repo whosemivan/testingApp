@@ -40,3 +40,8 @@
 .test-block__link {
     color: #000000;
 }
+
+.test-block__link-back {
+    color: #000000;
+    margin-bottom: 20px;
+}

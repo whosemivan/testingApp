@@ -27,11 +27,10 @@ const AllTests = ({ token, role }) => {
       }).catch((err) => console.log(err.response));
   };
 
-  console.log(tests);
-
   return (
     <div className='test-block'>
       <h1>Все доступные тесты</h1>
+      <Link className='test-block__link-back' to='/main'>Назад</Link>
       {isLoad ? tests.map((test) => {
         return (
           <div className='test-block__block' key={test.id}>

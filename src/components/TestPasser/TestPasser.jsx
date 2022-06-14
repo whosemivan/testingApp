@@ -12,6 +12,8 @@ const TestPasser = ({ token }) => {
     const [answers, setAnswers] = useState([]);
     const [result, setResult] = useState();
     const [isPopup, setIsPopup] = useState(false);
+    const [blockTestBtn, setBlockTestBtn] = useState(false);
+    const [submitBtnActive, setSubmitBtnActive] = useState(true);
 
     // Получает все вопросы
     useEffect(() => {
@@ -38,6 +40,9 @@ const TestPasser = ({ token }) => {
 
         if (isLoad && nextQuestion < data.length) {
             setCurrentQuestion(nextQuestion);
+        } else {
+            setBlockTestBtn(true);
+            setSubmitBtnActive(false);
         }
     }
 
@@ -72,7 +77,7 @@ const TestPasser = ({ token }) => {
                         {Object.keys(data[currentQuestion].answers).map((key, index) => {
                             let value = data[currentQuestion].answers[key].value;
                             return (
-                                <button className='answers__btn' key={index} onClick={() => {
+                                <button className='answers__btn' key={index} disabled={blockTestBtn} onClick={() => {
                                     handleAnswerBtnClick(data[currentQuestion].id, data[currentQuestion].answers[key].value);
                                 }}>
                                     {value}
@@ -80,7 +85,7 @@ const TestPasser = ({ token }) => {
                             );
                         })}
                     </div>
-                    <button className='answers__btn-submit' onClick={handleSubmitClick}>Отправить</button>
+                    <button className='answers__btn-submit' onClick={handleSubmitClick} disabled={submitBtnActive}>Отправить</button>
                 </div>
             ) : (<p>Загрузка...</p>)}
             <div className={isPopup ? 'popup--view' : 'popup'}>

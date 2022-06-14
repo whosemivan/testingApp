@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     transition: border-radius 0.5s;
+    color: #000000;
 }
 
 .main__btn:hover {

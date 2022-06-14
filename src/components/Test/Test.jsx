@@ -4,7 +4,6 @@ import './test.css';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-
 const Test = ({token}) => { 
     const { id } = useParams(); 
     const [data, setData] = useState(); 
@@ -34,6 +33,7 @@ const Test = ({token}) => {
                                 <h4 className='test__title'>{name}</h4> 
                                 <p className='test__text'>Попыток осталось {remainPassCount}/{maxPassCount}</p> 
                                 <Link className='test__link' to={`/allTests/${id}/testPasser`}>Пройти</Link> 
+                                <Link className='test__link' to={`/allTests`}>Верунться к тестам</Link>
                             </div> 
                         </div>
                         ); 

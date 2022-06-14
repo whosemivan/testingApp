@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './allUsers.css';
+import { Link } from 'react-router-dom';
 
 const AllUsers = ({ token }) => {
     const [users, setUsers] = useState([]);
@@ -20,6 +21,7 @@ const AllUsers = ({ token }) => {
 
     return (
         <div className='user-container'>
+            <Link className='test__link' to={`/main`}>Назад</Link>
             {isLoad ? users.map((user, index) => {
                 return (
                     <div className='user-block' key={index}>
