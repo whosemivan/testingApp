@@ -40,6 +40,7 @@ const AllTests = ({ token, role }) => {
               <React.Fragment>
                 <button className='test-block__btn' onClick={() => onDeleteBtnClick(test.id)} type='button'>Удалить</button>
                 <Link to={`/editTest/${test.id}`} className='test-block__btn'>Изменить</Link>
+                <Link to={`/questionRedactor/${test.id}`} className='test-block__btn'>Редактировать вопросы</Link>
               </React.Fragment>
             }
             <Link className='test-block__link' to={`/allTests/${test.id}`}>Пройти тест</Link>

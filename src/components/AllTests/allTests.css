@@ -33,6 +33,7 @@
     transition: border-radius 0.5s;
     color: #000000;
     text-decoration: none;
+    text-align: center;
 }
 
 .test-block__btn:hover {

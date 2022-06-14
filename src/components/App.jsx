@@ -11,6 +11,8 @@ import TestCreator from './TestCreator/TestCreator';
 import QuestionCreator from './QuestionCreator/QuestionCreator';
 import AllUsers from './AllUsers/AllUsers';
 import EditTest from './EditTest/EditTest';
+import QuestionRedactor from './QuestionRedactor/QuestionRedactor';
+import QuestionEditor from './QuestionEditor/QuestionEditor';
 
 import browserHistory from "../browser-history";
 import PrivateRoute from '../private-route';
@@ -98,6 +100,16 @@ const App = () => {
         <PrivateRoute exact
           path='/editTest/:id'
           render={() => <EditTest token={token} />}
+          authorizationStatus={isAuth}
+        />
+        <PrivateRoute exact
+          path='/questionRedactor/:id'
+          render={() => <QuestionRedactor token={token} />}
+          authorizationStatus={isAuth}
+        />
+        <PrivateRoute exact
+          path='/questionEditor/:id'
+          render={() => <QuestionEditor token={token} />}
           authorizationStatus={isAuth}
         />
         <Route>
